@@ -1,0 +1,19 @@
+
+  <div class="container color-light">
+  <div class="col">
+    <h2>Login</h2>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+      <div >
+          <label>UserName:</label>
+          <input type="text" name="userName" placeholder="Email Id" ngModel>
+      </div>
+      
+       <div>
+           <label>Password:</label>
+            <input type="password" name="password" placeholder="Password" ngModel>
+       </div>
+          <input type="checkbox" name="admin" value="Admin" ngModel>Admin<br>
+      
+      <input type="submit" value="Login">
+    </form>
+  </div>
