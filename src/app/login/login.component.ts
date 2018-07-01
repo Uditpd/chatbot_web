@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import{Router} from '@angular/router'
+
 
 @Component({
   selector: 'app-login',
@@ -7,14 +8,17 @@ import {FormsModule} from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    onSubmit(value:any)
-    {
-        console.log(value)
-    }
+   
 
-  constructor() {
+  constructor(private router:Router) {
 
    }
+   onSubmit(value:any)
+    {
+        
+        console.log(value)
+        this.router.navigate(['chatbot']);
+    }
 
   ngOnInit() {
   }
