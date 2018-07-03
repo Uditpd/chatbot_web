@@ -13,18 +13,19 @@ export class LoginComponent implements OnInit {
    
 
   constructor(private router:Router,private dataService:DataService) {
-
    }
    onSubmit(value:any)
     {
-        
+        console.log(this.dataService);
         console.log(value.userName)
+        this.dataService.doPOST(value).subscribe(res => console.log(res.status));
         this.router.navigate(['chatbot']);
     }
       
 
   ngOnInit() {
-    this.dataService.getData().subscribe(res=>console.log(res))
+    //this.dataService.getData().subscribe(res=>console.log(res))
+    
   }
 
 }

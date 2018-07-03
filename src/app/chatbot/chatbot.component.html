@@ -1,40 +1,27 @@
 <button type="button" (click)=logout()>LOGOUT</button>
 <div class="chatbox">
-      <div class="chatlogs">
-          <div class="chat Self">
-              <div class="userPhoto"></div>
-              <p class="chatMessage">Hi I am udit!!!!</p>
-            </div>
-            <div class="chat Bot">
-              <div class="userPhoto"></div>
-              <p class="chatMessage">Hello udit!!!!</p>
-            </div>
-            <div class="chat Self">
-              <div class="userPhoto"></div>
-              <p class="chatMessage">Do You Have an Android Device</p>
-            </div>
-            <div class="chat Bot">
-              <div class="userPhoto"></div>
-              <p class="chatMessage">Yes What is your requirement</p>
-            </div>
-            <div class="chat Self">
-              <div class="userPhoto"></div>
-              <p class="chatMessage">Android Oreo</p>
-            </div>
-            <div class="chat Bot">
-              <div class="userPhoto"></div>
-              <p class="chatMessage">Ram??</p>
-            </div>
-            <div class="chat Self">
-              <div class="userPhoto"></div>
-              <p class="chatMessage">8gb</p>
-            </div>
-            
+    <div class="chatlogs">
+       <div *ngFor="let text of msgs;" >
+            <div *ngIf="text.user=='Bot';then bot else user"></div>
+            <ng-template #bot>
+                <div class="chat Bot">
+                    <div class="userPhoto"></div>
+                    <p class="chatMessage">{{text.reply}}</p>
+                </div>
+            </ng-template>
+            <ng-template #user>
+                <div class="chat Self">
+                    <div class="userPhoto"></div>
+                    <div class="hjsdhsjhd"></div>
+                    <p class="chatMessage">{{text.reply}}</p>
+                </div>
+            </ng-template>    
         </div>
+    </div>
 
-        <div class="chatForm">
-            <textarea name="" id="msg"></textarea>
-            <button id="send">send</button>
-        </div>
-    </div>  
+    <div class="chatForm">
+        <textarea name="" [(ngModel)]="msg" id="msg"></textarea>
+           <button id="send" (click)="send()">send</button>
+    </div>
+</div>  
 

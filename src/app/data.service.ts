@@ -10,8 +10,14 @@ import 'rxjs/add/operator/map';
 })
 export class DataService {
   private _url: string="http://httpbin.org/get"
+
   constructor(private _http:Http) { }
   getData(){
     return this._http.get(this._url).map(res=>res.json());
   }
+  doPOST(val) {
+  console.log("POST");
+  let url = "http://httpbin.org/post";
+  return this._http.post(url,val).map(res=>res.json());
+}
 }
