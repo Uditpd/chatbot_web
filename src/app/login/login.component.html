@@ -1,26 +1,51 @@
 
-  <div class="container color-light">
-  <div class="col">
-    <h2>Login</h2>
-    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
-      <div class="form-group">
-          <label>UserName:</label>
-          <input type="text" #nameRef="ngModel" required name="userName" placeholder="Email Id" ngModel>
-          <div [hidden]='nameRef.valid || nameRef.pristine' class="alert alert-danger">
-            Please enter User Name
+  <div class="container">
+    <div class="columns content">
+      <div class="col col-3"></div>
+      <div class="col col-6">
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title text-center">Login</div>
           </div>
+          <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+            <div class="panel-body">
+               <div class="form-group">
+              <label class="form-label">Username:</label>
+              <input type="text" class="form-input" #nameRef="ngModel" required name="userName" placeholder="Email Id" ngModel>
+              <div [hidden]='nameRef.valid || nameRef.pristine' class="alert alert-danger">
+                Please enter User Name
+              </div>
+          </div>
+          
+          <div class="form-group">
+              <label class="form-label">Password: </label>
+                <input type="password" class="form-input" #passRef="ngModel" minlength="8" required name="password" placeholder="Password" ngModel>
+                
+                <div [hidden]='!passRef.error && (passRef.valid || passRef.pristine)' class="alert alert-danger" >
+                Please enter a valid Password
+              </div>
+          </div>
+            <div class="form-group">
+            <label class="form-checkbox">
+              <input type="checkbox" name="admin" value="Admin" ngModel>
+              <i class="form-icon"></i> Admin
+            </label>
+          </div>
+              
+          
+          
+            </div>
+            <div class="panel-footer">
+              <input [disabled]="!userForm.form.valid" type="submit" value="Login" class="btn btn-success btn-block temp">
+            </div>
+          </form>
       </div>
-      
-       <div class="form-group">
-           <label>Password: </label>
-            <input type="password" #passRef="ngModel" minlength="8" required name="password" placeholder="Password" ngModel>
-            
-            <div [hidden]='!passRef.error && (passRef.valid || passRef.pristine)' class="alert alert-danger" >
-            Please enter a valid Password
-          </div>
-       </div>
-          <input type="checkbox" name="admin" value="Admin" ngModel>Admin<br>
-      
-      <input [disabled]="!userForm.form.valid" type="submit" value="Login">
-    </form>
-  </div>
+      <div class="col col-3"></div>
+    </div>
+</div>
+
+
+
+
+         
+ 

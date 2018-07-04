@@ -25,6 +25,7 @@
     "firebase": "^5.2.0",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
+    "spectre.css": "^0.5.3",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
