@@ -18,19 +18,20 @@ body{
     box-shadow: 0 3px #ccc;
 
 }
-.chatlogs{
+#chatlogs{
 padding: 10px;
 width: 100%;
 height: 450px;
 background: #eee;
+overflow: auto;
 overflow-x: hidden;
 overflow-y: scroll;
 }
-.chatlogs::-webkit-scrollbar{
+#chatlogs::-webkit-scrollbar{
     width: 10px;
 }
 
-.chatlogs::-webkit-scrollbar-thumb{
+#chatlogs::-webkit-scrollbar-thumb{
    border-radius: 5px;
    background: rgba(0,0,0,.1)
 }

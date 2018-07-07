@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import {DataService} from './data.service';
 import {HttpModule} from '@angular/http'
+import {NgxAutoScrollModule} from "ngx-auto-scroll";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {HttpModule} from '@angular/http'
     AppRoutingModule,
     FormsModule,
     HttpModule,
+    NgxAutoScrollModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

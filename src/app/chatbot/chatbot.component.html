@@ -1,18 +1,27 @@
-<button type="button" (click)=logout()>LOGOUT</button>
+
 <div class="chatbox">
-    <div class="chatlogs">
+    <button type="button" class="btn btn-success" (click)=logout()>LOGOUT</button>
+    <div id="chatlogs" ngx-auto-scroll lock-y-offset="10" observe-attributes>
        <div *ngFor="let text of msgs;" >
             <div *ngIf="text.user=='Bot';then bot else user"></div>
             <ng-template #bot>
                 <div class="chat Bot">
-                    <div class="userPhoto"></div>
+                    <div class="userPhoto">
+                        <figure class="avatar avatar-xl">
+                        <img src="../assets/bot.png" alt="BOT">
+                        </figure>
+                    </div>
                     <p class="chatMessage">{{text.reply}}</p>
                 </div>
             </ng-template>
             <ng-template #user>
                 <div class="chat Self">
-                    <div class="userPhoto"></div>
-                    <div class="hjsdhsjhd"></div>
+                    <div class="userPhoto">
+                        <figure class="avatar avatar-xl">
+                        <img src="../assets/user.png" alt="USER">
+                        <i class="avatar-presence online"></i>
+                        </figure>
+                    </div>
                     <p class="chatMessage">{{text.reply}}</p>
                 </div>
             </ng-template>    

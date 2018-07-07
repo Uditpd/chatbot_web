@@ -10,6 +10,9 @@ import 'rxjs/add/operator/map';
 })
 export class DataService {
   private _url: string="http://httpbin.org/get"
+  private response={
+      "token":""
+    };
 
   constructor(private _http:Http) { }
   getData(){
@@ -17,7 +20,12 @@ export class DataService {
   }
   doPOST(val) {
   console.log("POST");
-  let url = "http://httpbin.org/post";
+  let url = "http://8d72bf82.ngrok.io/login";
+  return this._http.post(url,val).map(res=>res.json());
+}
+doPOSTChat(val) {
+  console.log("POST");
+  let url = "http://8d72bf82.ngrok.io/chat";
   return this._http.post(url,val).map(res=>res.json());
 }
 }

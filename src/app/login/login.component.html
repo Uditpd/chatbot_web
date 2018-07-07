@@ -7,30 +7,38 @@
           <div class="panel-header">
             <div class="panel-title text-center">Login</div>
           </div>
-          <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+          <form #userForm="ngForm"  (ngSubmit)="onSubmit(userForm.value)">
             <div class="panel-body">
                <div class="form-group">
               <label class="form-label">Username:</label>
-              <input type="text" class="form-input" #nameRef="ngModel" required name="userName" placeholder="Email Id" ngModel>
-              <div [hidden]='nameRef.valid || nameRef.pristine' class="alert alert-danger">
-                Please enter User Name
-              </div>
+              <input type="text" class="form-input" #nameRef="ngModel" required name="userId" placeholder="Email Id" [(ngModel)]="uValue">
+              <p [hidden]='nameRef.valid || nameRef.pristine || error!=null' class="form-input-hint">
+                Please Enter User Name
+              </p>
           </div>
           
           <div class="form-group">
               <label class="form-label">Password: </label>
-                <input type="password" class="form-input" #passRef="ngModel" minlength="8" required name="password" placeholder="Password" ngModel>
+                <input type="password" class="form-input " #passRef="ngModel" required name="password" placeholder="Password" [(ngModel)]="pValue">
                 
-                <div [hidden]='!passRef.error && (passRef.valid || passRef.pristine)' class="alert alert-danger" >
-                Please enter a valid Password
-              </div>
+               <!-- <p [hidden]='!passRef.error && (passRef.valid || passRef.pristine)' class="form-input-hint" >
+                Please Enter a valid Password
+              </p>-->
+              <p [hidden]='passRef.valid || passRef.pristine || error!=null' class="form-input-hint">
+                Please Enter Password
+              </p>
+               <p [hidden]='passRef.valid || passRef.pristine ||nameRef.valid || nameRef.pristine' class="form-input-hint err" ng-bind="error" >
+                {{error}}
+              </p>
+              
+              
           </div>
-            <div class="form-group">
+           <!-- <div class="form-group">
             <label class="form-checkbox">
               <input type="checkbox" name="admin" value="Admin" ngModel>
               <i class="form-icon"></i> Admin
             </label>
-          </div>
+          </div>-->
               
           
           
@@ -40,7 +48,9 @@
             </div>
           </form>
       </div>
-      <div class="col col-3"></div>
+      <div class="col col-3">
+        
+      </div>
     </div>
 </div>
 
