@@ -10,7 +10,7 @@ import {DataService} from '../data.service'
 })
 export class ChatbotComponent implements OnInit {
   private msgs=[];
-  msg : String;
+  msg : String=null;
   user : String = "Udit"; 
   private request={
     "query":"",
@@ -38,13 +38,13 @@ export class ChatbotComponent implements OnInit {
         }
         console.log(request)
      // this.dataService.doPOSTChat(request).subscribe(res => this.reply=res);
-      this.msg='';
+      
       console.log(this.reply.answer);
       setTimeout(()=>{
         this.msgs.push({"user":"Bot","reply":this.reply.answer});
-      },1000)
+      },500)
       
-      
+      this.msg=null;
     }
 
     ngOnInit() {

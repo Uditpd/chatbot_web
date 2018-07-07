@@ -11,10 +11,13 @@ body{
 .chatbox{
     width: 500px;
     min-width: 390px;
-    height: 600px;
+    height: 550px;
     background: #fff;
-    padding: 25px;
-    margin: 20px auto;
+    margin-top:10px;
+    margin-bottom:20px;
+    margin-left:auto;
+    margin-right:auto;
+    border:2px solid #bbb6b6;
     box-shadow: 0 3px #ccc;
 
 }
@@ -72,12 +75,13 @@ order: -1;
 .chatForm textarea{
     background: #fbfbfb;
     width: 75%;
-    height: 50px;
+    height: 60px;
     border: 2px solid #eee;
     border-radius: 3px;
     resize: none;
-    padding: 10px;
-    font-size: 18px;
+    padding: 12px;
+    margin-left:10px;
+    font-size: 20px;
     color: #333;
 
 }
@@ -101,11 +105,16 @@ order: -1;
     border-radius: 3px;
     margin: 0 10px;
     box-shadow: 0 3px 0 #0eb2c1;
-    cursor: pointer;
     -webkit-transition: background .2s ease;
     -moz-transition: background .2s ease;
     -o-transition: background .2s ease;
 }
-.chatForm button:hover{
+.chatForm button:hover:not(:disabled):not(.disabled){
     background: #13c8d9;
+    cursor: pointer;
+}
+
+.temp{
+    padding: 5px 15px;
+    padding-bottom:35px;
 }
