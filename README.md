@@ -1,5 +1,14 @@
 # Project
-
+1)To run This file clone and download
+2)install angular 
+3)go to the directory of file downloaded
+  example:C:\Users\udit\project>
+4)C:\Users\udit\project>npm install
+    this will install all the dependencies in package.json
+5)C:\Users\udit\project>ng serve
+    Now open `http://localhost:4200/`
+    
+ **NOTE: don't forget to change the url of backend in data.service.ts file for successful execution
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
 ## Development server
