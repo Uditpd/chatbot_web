@@ -1,38 +1,72 @@
-<p align="right">
-<button type="button" class="btn btn-success temp" (click)=logout()>LOGOUT</button>
-</p>
-<div class="chatbox">
-    
-    <div id="chatlogs" ngx-auto-scroll lock-y-offset="10" observe-attributes>
-       <div *ngFor="let text of msgs;" >
-            <div *ngIf="text.user=='Bot';then bot else user"></div>
-            <ng-template #bot>
-                <div class="chat Bot">
-                    <div class="userPhoto">
-                        <figure class="avatar avatar-xl">
-                        <img src="../assets/bot.png" alt="BOT">
-                        </figure>
-                    </div>
-                    <p class="chatMessage">{{text.reply}}</p>
+<header class="navbar">
+  <section class="navbar-section">
+    <img src="../assets/logo.png" class="img-logo l1"/>
+     
+  </section>
+  <section class="navbar-center">
+  <h2 class="logo">TCS Device Manager</h2>
+  </section>
+  <section class="navbar-section">
+   <button type="button" class="btn temp" (click)=logout()>LOGOUT</button>
+  </section>
+</header>
+<div class="container ">
+  <div class="columns content">
+    <div class="column col-3">
+        <div class="panel pad">
+                  <div class="panel-header text-center">
+                    <figure class="avatar avatar-xl"><img src="../assets/user.png" alt="Avatar"></figure><br><br>
+                    <div class="panel-title h3 mt-10" (ngModel)="userName">{{userName}}</div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="panel-subtitle h5"  (ngModel)="userId">User Id:  {{userId}}</div>
+                  </div>
                 </div>
-            </ng-template>
-            <ng-template #user>
-                <div class="chat Self">
-                    <div class="userPhoto">
-                        <figure class="avatar avatar-xl">
-                        <img src="../assets/user.png" alt="USER">
-                        <i class="avatar-presence online"></i>
-                        </figure>
-                    </div>
-                    <p class="chatMessage">{{text.reply}}</p>
-                </div>
-            </ng-template>    
-        </div>
+        
     </div>
+    <div class="column col-4"></div>
+    <div class="column col-5">
+        
+        <div [hidden]="!hid" class="chatbox blank"></div>
+        <div [hidden]="hid" class="chatbox">
+            
+            <div id="chatlogs" ngx-auto-scroll lock-y-offset="10" observe-attributes>
+            <div *ngFor="let text of msgs;" >
+                    <div *ngIf="text.user=='Bot';then bot else user"></div>
+                    <ng-template #bot>
+                        <div class="chat Bot">
+                            <div class="userPhoto">
+                                <figure class="avatar avatar-lg">
+                                <img src="../assets/bot.png" alt="BOT">
+                                </figure>
+                            </div>
+                            <p class="chatMessage">{{text.reply}}</p>
+                        </div>
+                    </ng-template>
+                    <ng-template #user>
+                        <div class="chat Self">
+                            <div class="userPhoto">
+                                <figure class="avatar avatar-lg">
+                                <img src="../assets/user.png" alt="USER">
+                                <i class="avatar-presence online"></i>
+                                </figure>
+                            </div>
+                            <p class="chatMessage">{{text.reply}}</p>
+                        </div>
+                    </ng-template>    
+                </div>
+            </div>
 
-    <div class="chatForm">
-        <textarea name="" [(ngModel)]="msg" #msgRef="ngModel"  required id="msg"></textarea>
-           <button [disabled]="!msgRef.valid"  id="send" (click)="send()">send</button>
+            <div class="chatForm">
+                <textarea name="" [(ngModel)]="msg" #msgRef="ngModel"  required id="msg"></textarea>
+                <button [disabled]="!msgRef.valid"  id="send" (click)="send()">send</button>
+            </div>
+        </div> 
+        <span class="float-right">
+        <a (click)=chatDisplay()><img src="../assets/chat.png"/></a>
+        </span>
     </div>
-</div>  
+    </div>
+</div>
+
 

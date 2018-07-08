@@ -14,9 +14,14 @@ export class LoginComponent implements OnInit {
     private uValue="";
     private pValue="";
     private error:String="";
+    
     private response={
-      "token":"1234"
+      EmployeeID: "", 
+    IsAdmin: true,
+    EmployeeName: "",
+    token: null
     };
+ 
     
   constructor(private router:Router,private dataService:DataService) {
    }
@@ -24,29 +29,45 @@ export class LoginComponent implements OnInit {
     {
         
         console.log(value)
-        //this.dataService.doPOST(value).subscribe(res => console.log(res));
-        console.log(this.response);
-        localStorage.setItem("token",this.response.token);
-        localStorage.setItem("userId",value.userId);
-        if(this.response.token!=null)
-          {
-        this.router.navigate(['chatbot']);
+         //comment  the next sixteen line below  when not working with server
+        this.dataService.doPOST(value).subscribe(res => {
+          console.log(res);
+          if(res.statusCode==200)
+            {
+          console.log(res.body)
+          this.response=res.body;
+        
+          console.log(this.response);
+          localStorage.setItem("token",this.response.token);
+          localStorage.setItem("userId",this.response.EmployeeID);
+          localStorage.setItem("userName",this.response.EmployeeName);
+          this.router.navigate(['chatbot']);
           }
-      else
-        {
-          this.error="Invalid UserName or Password"
-            console.log(this.error);
-            this.uValue=null;
-            this.pValue=null;
-           
-        }
+          else
+          {
+            this.error="Invalid UserName or Password"
+              console.log(this.error);
+              this.uValue=null;
+              this.pValue=null;
+          }
+          },err=>{
+              this.error="Server Error Please Try after Sometime";
+              this.uValue=null;
+              this.pValue=null;
+        });
 
+
+        // setTimeout(()=>{},500)
+
+
+        //uncomment only the next line below when working without server
+           //this.router.navigate(['chatbot']);
+        
     }
       
 
   ngOnInit() {
-    //this.dataService.getData().subscribe(res=>console.log(res))
-    
+    this.error=null;
   }
 
 }
