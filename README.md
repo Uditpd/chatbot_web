@@ -1,10 +1,16 @@
 # Project
+
+
 1)To run This file clone and download
+
 2)install angular 
+
 3)go to the directory of file downloaded
   example:C:\Users\udit\project>
+
 4)C:\Users\udit\project>npm install
-    this will install all the dependencies in package.json
+    **This will install all the dependencies in package.json**
+
 5)C:\Users\udit\project>ng serve
     Now open `http://localhost:4200/`
 
